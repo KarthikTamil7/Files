@@ -99,13 +99,14 @@ I'm an HMTD Official File Store Bot Maintained by @HMTD_Links. I will Store File
         db.getBotAssets().then((res) => {
           let assets = res[0];
           ctx.replyWithHTML(
-            `🔖 <i>You must join our channel to use this bot.Click joined button after joining channel</i>`,
+            `🔖 <b>Hi👋 <b>${ctx.from.first_name}</b>
+You must join our Channel to Use This Bot.You Need to Join Our Channel to Use me.Kindly Please Join Our Channel.Click Joined Button after Joining Channel</b>`,
             {
               reply_markup: {
                 inline_keyboard: [
                   [
                     {
-                      text: "✔ JOIN CHANNEL",
+                      text: "✅JOIN CHANNEL",
                       url: `${
                         assets ? assets.channel : process.env.INVITE_LINK
                       }`,
@@ -113,7 +114,7 @@ I'm an HMTD Official File Store Bot Maintained by @HMTD_Links. I will Store File
                   ],
                   [
                     {
-                      text: "♻ JOINED",
+                      text: "♻JOINED",
                       callback_data: "CHECKJOINED",
                     },
                   ],
