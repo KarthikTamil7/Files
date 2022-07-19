@@ -52,7 +52,8 @@ bot.start(async (ctx) => {
               );
             } else {
               ctx.reply(
-                `<b>I will store files for you and generate sharable links</b>`,
+                `<b>Hi👋 <b>${ctx.from.first_name}</b>
+I'm an HMTD Official File Store Bot Maintained by @HMTD_Links. I will Store Files for you and Generate Sharable Links. Keep me Join to Our Official Channel to Receive Bot & Movies Updates in @HMTD_Links.</b>`,
                 {
                   parse_mode: "HTML",
                   reply_markup: {
@@ -1047,7 +1048,7 @@ bot.on("message", async (ctx) => {
 
     //Sharing public link for saved files
     ctx.reply(
-      `https://t.me/${process.env.BOTUSERNAME}?start=${fileDetails.shortid}`
+      `https://telegram.me/${process.env.BOTUSERNAME}?start=${fileDetails.shortid}`
     );
   }
 });
