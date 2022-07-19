@@ -67,22 +67,27 @@ bot.start(async (ctx) => {
         } else {
           //handle file queries
           await db.getFile(query).then((res) => {
+            /-/g.test(res.caption)
+              ? (res.caption = res.caption.replace(/([-._+)(])/g, "\\$1"))
+              : null;
+
+            console.log(res.caption);
             if (res.type == "video") {
               ctx.replyWithVideo(res.file_id, {
                 caption: res.caption,
-                parse_mode: "Markdown",
+                parse_mode: "MarkdownV2",
                 reply_markup: res.reply_markup ?? null,
               });
             } else if (res.type == "photo") {
               ctx.replyWithPhoto(res.file_id, {
                 caption: res.caption,
-                parse_mode: "Markdown",
+                parse_mode: "MarkdownV2",
                 reply_markup: res.reply_markup ?? null,
               });
             } else {
               ctx.replyWithDocument(res.file_id, {
                 caption: res.caption,
-                parse_mode: "Markdown",
+                parse_mode: "MarkdownV2",
                 reply_markup: res.reply_markup ?? null,
               });
             }
@@ -1049,11 +1054,11 @@ bot.on("message", async (ctx) => {
 
 //=================================bot config=================================//
 
-bot.launch({
-  webhook: {
-    domain: `${process.env.DOMAIN}.herokuapp.com`,
-    port: Number(process.env.PORT),
-  },
-});
+// bot.launch({
+//   webhook: {
+//     domain: `${process.env.DOMAIN}.herokuapp.com`,
+//     port: Number(process.env.PORT),
+//   },
+// });
 
-// bot.launch();
+bot.launch();
