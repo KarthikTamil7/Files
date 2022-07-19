@@ -1054,11 +1054,11 @@ bot.on("message", async (ctx) => {
 
 //=================================bot config=================================//
 
-// bot.launch({
-//   webhook: {
-//     domain: `${process.env.DOMAIN}.herokuapp.com`,
-//     port: Number(process.env.PORT),
-//   },
-// });
+bot.launch({
+  webhook: {
+    domain: `${process.env.DOMAIN}.herokuapp.com`,
+    port: Number(process.env.PORT),
+  },
+});
 
-bot.launch();
+// bot.launch();
