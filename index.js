@@ -41,9 +41,9 @@ bot.start(async (ctx) => {
               return await ctx.replyWithHTML(
                 `Hello <b>${ctx.from.first_name} </b> welcome to admin panel`,
                 Markup.keyboard([
-                  ["👤 Manage admins", "⚙ Config bot"],
-                  ["📊 Bot status"],
-                  ["🗑 Delete files", "☢ Delete all"],
+                  ["👤 Manage Admins", "⚙ Config Bot"],
+                  ["📊 Bot Status"],
+                  ["🗑 Delete Files", "☢ Delete all"],
                   ["🛑 Ban", "♻ Unban"],
                   ["💌 Broadcast"],
                 ])
@@ -52,7 +52,7 @@ bot.start(async (ctx) => {
               );
             } else {
               ctx.reply(
-                `<b>Hi👋 <b>${ctx.from.first_name}</b>
+                `<b>Hi👋 <b>[{}](tg://user?id={})</b>
 I'm an HMTD Official File Store Bot Maintained by @HMTD_Links. I will Store Files for you and Generate Sharable Links. Keep me Join to Our Official Channel to Receive Bot & Movies Updates in @HMTD_Links.</b>`,
                 {
                   parse_mode: "HTML",
@@ -99,7 +99,7 @@ I'm an HMTD Official File Store Bot Maintained by @HMTD_Links. I will Store File
         db.getBotAssets().then((res) => {
           let assets = res[0];
           ctx.replyWithHTML(
-            `🔖 <b>Hi👋 <b>${ctx.from.first_name}</b>
+            `🔖 <b>Hi👋 <b>[{}](tg://user?id={})</b>
 You must join our Channel to Use This Bot.You Need to Join Our Channel to Use me.Kindly Please Join Our Channel.Click Joined Button after Joining Channel</b>`,
             {
               reply_markup: {
@@ -170,16 +170,16 @@ bot.hears("👤 Manage admins", async (ctx) => {
 
 //bot status
 
-bot.hears("📊 Bot status", (ctx) => {
+bot.hears("📊 Bot Status", (ctx) => {
   ctx.deleteMessage();
   db.getAUser(ctx.from.id).then((res) => {
     if (res.admin || ctx.from.id == process.env.ADMIN) {
       db.getUser().then((user) => {
         db.getAllFiles().then((files) => {
           ctx.replyWithHTML(
-            `📊<b>Bot statitics</b>\n\n🧾<i>Total users</i>: ${
+            `📊<b>Bot Statitics</b>\n\n🧾<i>Total users</i>: ${
               user.length ?? ""
-            }\n📁 <i>Total files</i>: ${files.length ?? ""}`
+            }\n📁 <i>Total Files</i>: ${files.length ?? ""}`
           );
         });
       });
@@ -190,13 +190,13 @@ bot.hears("📊 Bot status", (ctx) => {
 });
 
 //Deleting files
-bot.hears("🗑 Delete files", (ctx) => {
+bot.hears("🗑 Delete Files", (ctx) => {
   ctx.deleteMessage();
   db.getAUser(ctx.from.id).then((res) => {
     if (res.admin || ctx.from.id == process.env.ADMIN) {
       db.getAllFiles().then((files) => {
         ctx.replyWithHTML(
-          `📁 <i>Total files</i>: ${
+          `📁 <i>Total Files</i>: ${
             files.length ?? ""
           }\n\n<i>You can remove files one by one using file ID or delete a batch of files send by a particular user</i>`,
           {
@@ -251,9 +251,9 @@ const banUserQuestion = new TelegrafStatelessQuestion(
             return await ctx.replyWithHTML(
               `✔ <b>Banned</b>`,
               Markup.keyboard([
-                ["👤 Manage admins", "⚙ Config bot"],
-                ["📊 Bot status"],
-                ["🗑 Delete files", "☢ Delete all"],
+                ["👤 Manage Admins", "⚙ Config Bot"],
+                ["📊 Bot Status"],
+                ["🗑 Delete Files", "☢ Delete all"],
                 ["🛑 Ban", "♻ Unban"],
                 ["💌 Broadcast"],
               ])
@@ -264,9 +264,9 @@ const banUserQuestion = new TelegrafStatelessQuestion(
             return await ctx.replyWithHTML(
               `✔ <b>Something went wrong</b>`,
               Markup.keyboard([
-                ["👤 Manage admins", "⚙ Config bot"],
-                ["📊 Bot status"],
-                ["🗑 Delete files", "☢ Delete all"],
+                ["👤 Manage Admins", "⚙ Config Bot"],
+                ["📊 Bot Status"],
+                ["🗑 Delete Files", "☢ Delete all"],
                 ["🛑 Ban", "♻ Unban"],
                 ["💌 Broadcast"],
               ])
@@ -308,9 +308,9 @@ const unBanUserQuestion = new TelegrafStatelessQuestion(
             return await ctx.replyWithHTML(
               `✔ <b>Unbanned</b>`,
               Markup.keyboard([
-                ["👤 Manage admins", "⚙ Config bot"],
-                ["📊 Bot status"],
-                ["🗑 Delete files", "☢ Delete all"],
+                ["👤 Manage Admins", "⚙ Config Bot"],
+                ["📊 Bot Status"],
+                ["🗑 Delete Files", "☢ Delete all"],
                 ["🛑 Ban", "♻ Unban"],
                 ["💌 Broadcast"],
               ])
@@ -321,9 +321,9 @@ const unBanUserQuestion = new TelegrafStatelessQuestion(
             return await ctx.replyWithHTML(
               `✔ <b>Something went wrong</b>`,
               Markup.keyboard([
-                ["👤 Manage admins", "⚙ Config bot"],
-                ["📊 Bot status"],
-                ["🗑 Delete files", "☢ Delete all"],
+                ["👤 Manage Admins", "⚙ Config Bot"],
+                ["📊 Bot Status"],
+                ["🗑 Delete Files", "☢ Delete all"],
                 ["🛑 Ban", "♻ Unban"],
                 ["💌 Broadcast"],
               ])
@@ -362,7 +362,7 @@ bot.hears("💌 Broadcast", async (ctx) => {
     if (res.admin || ctx.from.id == process.env.ADMIN) {
       await db.getUser().then((user) => {
         ctx.reply(
-          `📊 Total users: ${user.length}\n\n\n<i>You can either broadcast a message to a particular user or broadcast to all users.</i>\n<b>Note:</b>Forward message/post to be broadcasted to all users from your post bot and enter Post ID after selecting below buttons`,
+          `📊 Total Users: ${user.length}\n\n\n<i>You can either broadcast a message to a particular user or broadcast to all users.</i>\n<b>Note:</b>Forward message/post to be broadcasted to all users from your post bot and enter Post ID after selecting below buttons`,
           {
             parse_mode: "HTML",
             reply_markup: {
@@ -411,14 +411,14 @@ const addNewAdminQuestion = new TelegrafStatelessQuestion(
           try {
             bot.telegram.sendMessage(
               parseInt(ctx.message.text),
-              `🔑 You are hired as admin`
+              `🔑 You are hired as Admin`
             );
             return await ctx.replyWithHTML(
               `✔ <b>Success \n</b><i>Please check manage admin sections and verify</i>`,
               Markup.keyboard([
-                ["👤 Manage admins", "⚙ Config bot"],
-                ["📊 Bot status"],
-                ["🗑 Delete files", "☢ Delete all"],
+                ["👤 Manage Admins", "⚙ Config Bot"],
+                ["📊 Bot Status"],
+                ["🗑 Delete Files", "☢ Delete all"],
                 ["🛑 Ban", "♻ Unban"],
                 ["💌 Broadcast"],
               ])
@@ -458,9 +458,9 @@ const removeAdminQuestion = new TelegrafStatelessQuestion(
             return await ctx.replyWithHTML(
               `✔ <b>Success \n</b><i>Please check manage admin sections and verify</i>`,
               Markup.keyboard([
-                ["👤 Manage admins", "⚙ Config bot"],
-                ["📊 Bot status"],
-                ["🗑 Delete files", "☢ Delete all"],
+                ["👤 Manage Admins", "⚙ Config Bot"],
+                ["📊 Bot Status"],
+                ["🗑 Delete Files", "☢ Delete all"],
                 ["🛑 Ban", "♻ Unban"],
                 ["💌 Broadcast"],
               ])
@@ -519,9 +519,9 @@ const removeOneFileQuestion = new TelegrafStatelessQuestion(
             return await ctx.replyWithHTML(
               `✔ <b>Success</b>`,
               Markup.keyboard([
-                ["👤 Manage admins", "⚙ Config bot"],
-                ["📊 Bot status"],
-                ["🗑 Delete files", "☢ Delete all"],
+                ["👤 Manage Admins", "⚙ Config Bot"],
+                ["📊 Bot Status"],
+                ["🗑 Delete Files", "☢ Delete all"],
                 ["🛑 Ban", "♻ Unban"],
                 ["💌 Broadcast"],
               ])
@@ -532,9 +532,9 @@ const removeOneFileQuestion = new TelegrafStatelessQuestion(
             return await ctx.replyWithHTML(
               `❗ <i>Something went wrong make sure the entered shortid is correct</i>`,
               Markup.keyboard([
-                ["👤 Manage admins", "⚙ Config bot"],
-                ["📊 Bot status"],
-                ["🗑 Delete files", "☢ Delete all"],
+                ["👤 Manage Admins", "⚙ Config Bot"],
+                ["📊 Bot Status"],
+                ["🗑 Delete Files", "☢ Delete all"],
                 ["🛑 Ban", "♻ Unban"],
                 ["💌 Broadcast"],
               ])
@@ -563,9 +563,9 @@ const removeBatchFileQuestion = new TelegrafStatelessQuestion(
             return await ctx.replyWithHTML(
               `✔ <b>Success</b> <i>removed ${stats.deletedCount} files</i>`,
               Markup.keyboard([
-                ["👤 Manage admins", "⚙ Config bot"],
-                ["📊 Bot status"],
-                ["🗑 Delete files", "☢ Delete all"],
+                ["👤 Manage Admins", "⚙ Config Bot"],
+                ["📊 Bot Status"],
+                ["🗑 Delete Files", "☢ Delete all"],
                 ["🛑 Ban", "♻ Unban"],
                 ["💌 Broadcast"],
               ])
@@ -576,9 +576,9 @@ const removeBatchFileQuestion = new TelegrafStatelessQuestion(
             return await ctx.replyWithHTML(
               `❗ <i>Something went wrong make sure the entered user id is correct</i>`,
               Markup.keyboard([
-                ["👤 Manage admins", "⚙ Config bot"],
-                ["📊 Bot status"],
-                ["🗑 Delete files", "☢ Delete all"],
+                ["👤 Manage Admins", "⚙ Config Bot"],
+                ["📊 Bot Status"],
+                ["🗑 Delete Files", "☢ Delete all"],
                 ["🛑 Ban", "♻ Unban"],
                 ["💌 Broadcast"],
               ])
@@ -625,9 +625,9 @@ bot.action("CONFIRMREMOVEALLFILES", (ctx) => {
           return await ctx.replyWithHTML(
             `✔ <b>Success</b> <i>removed ${stats.deletedCount} files</i>`,
             Markup.keyboard([
-              ["👤 Manage admins", "⚙ Config bot"],
-              ["📊 Bot status"],
-              ["🗑 Delete files", "☢ Delete all"],
+              ["👤 Manage Admins", "⚙ Config Bot"],
+              ["📊 Bot Status"],
+              ["🗑 Delete Files", "☢ Delete all"],
               ["🛑 Ban", "♻ Unban"],
               ["💌 Broadcast"],
             ])
@@ -638,9 +638,9 @@ bot.action("CONFIRMREMOVEALLFILES", (ctx) => {
           return await ctx.replyWithHTML(
             `❗ <i>Something went wrong try again later</i>`,
             Markup.keyboard([
-              ["👤 Manage admins", "⚙ Config bot"],
-              ["📊 Bot status"],
-              ["🗑 Delete files", "☢ Delete all"],
+              ["👤 Manage Admins", "⚙ Config Bot"],
+              ["📊 Bot Status"],
+              ["🗑 Delete Files", "☢ Delete all"],
               ["🛑 Ban", "♻ Unban"],
               ["💌 Broadcast"],
             ])
@@ -726,9 +726,9 @@ const broadcastAllQuestion = new TelegrafStatelessQuestion(
                 return await ctx.replyWithHTML(
                   `<i>Broadcast completed</i>\n❗ Failed count : ${failedCount}`,
                   Markup.keyboard([
-                    ["👤 Manage admins", "⚙ Config bot"],
-                    ["📊 Bot status"],
-                    ["🗑 Delete files", "☢ Delete all"],
+                    ["👤 Manage Admins", "⚙ Config Bot"],
+                    ["📊 Bot Status"],
+                    ["🗑 Delete Files", "☢ Delete all"],
                     ["🛑 Ban", "♻ Unban"],
                     ["💌 Broadcast"],
                   ])
@@ -740,9 +740,9 @@ const broadcastAllQuestion = new TelegrafStatelessQuestion(
               return await ctx.replyWithHTML(
                 `<i>No post found.Forward post from your post making bot and grab postID</i>`,
                 Markup.keyboard([
-                  ["👤 Manage admins", "⚙ Config bot"],
-                  ["📊 Bot status"],
-                  ["🗑 Delete files", "☢ Delete all"],
+                  ["👤 Manage Admins", "⚙ Config Bot"],
+                  ["📊 Bot Status"],
+                  ["🗑 Delete Files", "☢ Delete all"],
                   ["🛑 Ban", "♻ Unban"],
                   ["💌 Broadcast"],
                 ])
@@ -804,11 +804,11 @@ bot.action("CHECKJOINED", async (ctx) => {
         db.getAUser(ctx.from.id).then(async (res) => {
           if (res.admin || ctx.from.id == process.env.ADMIN) {
             return await ctx.replyWithHTML(
-              `Hello <b>${ctx.from.first_name} </b> welcome to admin panel`,
+              `<b>Hello</b> <b>[{}](tg://user?id={})</b> <b>welcome to admin panel</b>`,
               Markup.keyboard([
-                ["👤 Manage admins", "⚙ Config bot"],
-                ["📊 Bot status"],
-                ["🗑 Delete files", "☢ Delete all"],
+                ["👤 Manage Admins", "⚙ Config Bot"],
+                ["📊 Bot Status"],
+                ["🗑 Delete Files", "☢ Delete all"],
                 ["🛑 Ban", "♻ Unban"],
                 ["💌 Broadcast"],
               ])
@@ -817,7 +817,8 @@ bot.action("CHECKJOINED", async (ctx) => {
             );
           } else {
             ctx.reply(
-              `<b>I will store files for you and generate sharable links</b>`,
+              `<b>Hi👋 [{}](tg://user?id={})
+I'm an HMTD Official File Store Bot Maintained by @HMTD_Links. I will Store Files for you and Generate Sharable Links. Keep me Join to Our Official Channel to Receive Bot & Movies Updates in @HMTD_Links.</b>`,
               {
                 parse_mode: "HTML",
                 reply_markup: {
@@ -834,13 +835,13 @@ bot.action("CHECKJOINED", async (ctx) => {
         db.getBotAssets().then((res) => {
           let assets = res[0];
           ctx.replyWithHTML(
-            `🔖 <i>You must join our channel to use this bot.Click joined button after joining channel</i>`,
+            `🔖 <b>You must join our channel to use this bot.Click joined button after joining channel</b>`,
             {
               reply_markup: {
                 inline_keyboard: [
                   [
                     {
-                      text: "✔ JOIN CHANNEL",
+                      text: "✅ JOIN CHANNEL",
                       url: `${
                         assets ? assets.channel : process.env.INVITE_LINK
                       }`,
