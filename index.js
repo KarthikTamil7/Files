@@ -52,7 +52,7 @@ bot.start(async (ctx) => {
               );
             } else {
               ctx.reply(
-                `<b>Hi👋 <b>[{}](tg://user?id={})</b>
+                `<b>Hi👋 <b>(tg://user?id={})</b>
 I'm an HMTD Official File Store Bot Maintained by @HMTD_Links. I will Store Files for you and Generate Sharable Links. Keep me Join to Our Official Channel to Receive Bot & Movies Updates in @HMTD_Links.</b>`,
                 {
                   parse_mode: "HTML",
