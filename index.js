@@ -39,7 +39,7 @@ bot.start(async (ctx) => {
           db.getAUser(ctx.from.id).then(async (res) => {
             if (res.admin || ctx.from.id == process.env.ADMIN) {
               return await ctx.replyWithHTML(
-                `Hello <b>${ctx.from.first_name} </b> welcome to admin panel`,
+                `<b>Hello</b> <b>${ctx.from.first_name}</b> <b>welcome to Admin panel</b>`,
                 Markup.keyboard([
                   ["👤 Manage Admins", "⚙ Config Bot"],
                   ["📊 Bot Status"],
@@ -52,7 +52,7 @@ bot.start(async (ctx) => {
               );
             } else {
               ctx.reply(
-                `<b>Hi👋 <b>(tg://user?id={})</b>
+                `<b>Hi👋 <b>${ctx.from.first_name}</b>
 I'm an HMTD Official File Store Bot Maintained by @HMTD_Links. I will Store Files for you and Generate Sharable Links. Keep me Join to Our Official Channel to Receive Bot & Movies Updates in @HMTD_Links.</b>`,
                 {
                   parse_mode: "HTML",
@@ -99,7 +99,7 @@ I'm an HMTD Official File Store Bot Maintained by @HMTD_Links. I will Store File
         db.getBotAssets().then((res) => {
           let assets = res[0];
           ctx.replyWithHTML(
-            `🔖 <b>Hi👋 <b>[{}](tg://user?id={})</b>
+            `🔖 <b>Hi👋 <b>${ctx.from.first_name}</b>
 You must join our Channel to Use This Bot.You Need to Join Our Channel to Use me.Kindly Please Join Our Channel.Click Joined Button after Joining Channel</b>`,
             {
               reply_markup: {
@@ -129,7 +129,7 @@ You must join our Channel to Use This Bot.You Need to Join Our Channel to Use me
 
 //=================================Handling inline keyboard functions=================================//
 
-bot.hears("👤 Manage admins", async (ctx) => {
+bot.hears("👤 Manage Admins", async (ctx) => {
   if (ctx.from.id == process.env.ADMIN) {
     await db.getAdmin().then((res) => {
       if (res.length < 1) {
