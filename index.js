@@ -804,7 +804,7 @@ bot.action("CHECKJOINED", async (ctx) => {
         db.getAUser(ctx.from.id).then(async (res) => {
           if (res.admin || ctx.from.id == process.env.ADMIN) {
             return await ctx.replyWithHTML(
-              `<b>Hello</b> <b>[{}](tg://user?id={})</b> <b>welcome to admin panel</b>`,
+              `<b>Hello</b> <b>${ctx.from.first_name}</b> <b>welcome to admin panel</b>`,
               Markup.keyboard([
                 ["👤 Manage Admins", "⚙ Config Bot"],
                 ["📊 Bot Status"],
@@ -817,7 +817,7 @@ bot.action("CHECKJOINED", async (ctx) => {
             );
           } else {
             ctx.reply(
-              `<b>Hi👋 [{}](tg://user?id={})
+              `<b>Hi👋 ${ctx.from.first_name}
 I'm an HMTD Official File Store Bot Maintained by @HMTD_Links. I will Store Files for you and Generate Sharable Links. Keep me Join to Our Official Channel to Receive Bot & Movies Updates in @HMTD_Links.</b>`,
               {
                 parse_mode: "HTML",
